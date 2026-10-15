@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Apps</title>
+<meta name="description" content="Free study apps that run in your browser: Quiz Qrusher for practice quizzes and Class Base for searching your slides and textbooks.">
+<meta name="theme-color" content="#EEF1F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E1218" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131A24'/%3E%3Crect x='14' y='14' width='16' height='16' rx='4' fill='%235145E6'/%3E%3Crect x='34' y='14' width='16' height='16' rx='4' fill='%2324935C'/%3E%3Crect x='14' y='34' width='36' height='16' rx='4' fill='%23FFFFFF' fill-opacity='.85'/%3E%3C/svg%3E">
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#EEF1F5; --surface:#FFFFFF; --ink:#131A24; --muted:#616B7A; --line:#E2E7EE;
+    --qq:#4338CA; --qq-soft:#ECEBFB; --cb:#1E7A4C; --cb-soft:#E3F2EA;
+    --shadow:0 1px 2px rgba(19,26,36,.06), 0 8px 24px rgba(19,26,36,.06);
+    --shadow-hover:0 2px 4px rgba(19,26,36,.08), 0 14px 34px rgba(19,26,36,.10);
+    --font:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --bg:#0E1218; --surface:#161C25; --ink:#E8ECF2; --muted:#96A0AD; --line:#263140;
+      --qq:#8B87FF; --qq-soft:#23233A; --cb:#6FD3A0; --cb-soft:#13281E;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+      --shadow-hover:0 2px 4px rgba(0,0,0,.45), 0 14px 34px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#0E1218; --surface:#161C25; --ink:#E8ECF2; --muted:#96A0AD; --line:#263140;
+    --qq:#8B87FF; --qq-soft:#23233A; --cb:#6FD3A0; --cb-soft:#13281E;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    --shadow-hover:0 2px 4px rgba(0,0,0,.45), 0 14px 34px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--font);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--qq);outline-offset:3px;border-radius:6px}
+  .wrap{width:100%;max-width:980px;margin:0 auto;padding:0 16px}
+
+  header{padding:64px 0 28px}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+  h1{font-size:clamp(30px,5vw,42px);line-height:1.12;letter-spacing:-.02em;margin:0 0 12px;font-weight:750}
+  .lead{font-size:18px;color:var(--muted);margin:0;max-width:60ch}
+
+  .apps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:12px 0 56px}
+  @media (max-width:760px){ header{padding:40px 0 20px} .apps{grid-template-columns:1fr} }
+
+  .app{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);text-decoration:none;transition:box-shadow .15s ease, transform .15s ease, border-color .15s ease}
+  .app:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+  .app.qq:hover{border-color:var(--qq)}
+  .app.cb:hover{border-color:var(--cb)}
+  .top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+  .top svg{width:56px;height:56px;flex:none;border-radius:13px}
+  .app h2{font-size:22px;line-height:1.2;margin:0;letter-spacing:-.01em}
+  .tag{display:inline-block;font-size:13px;font-weight:600;border-radius:999px;padding:2px 10px;margin-top:4px}
+  .qq .tag{background:var(--qq-soft);color:var(--qq)}
+  .cb .tag{background:var(--cb-soft);color:var(--cb)}
+  .app p{margin:0 0 14px;color:var(--muted)}
+  .app ul{margin:0 0 20px;padding:0;list-style:none}
+  .app li{position:relative;padding-left:22px;margin:6px 0;font-size:15px}
+  .app li::before{content:"";position:absolute;left:4px;top:.62em;width:7px;height:7px;border-radius:2px}
+  .qq li::before{background:var(--qq)}
+  .cb li::before{background:var(--cb)}
+  .go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-weight:650}
+  .qq .go{color:var(--qq)}
+  .cb .go{color:var(--cb)}
+  .go svg{transition:transform .15s ease}
+  .app:hover .go svg{transform:translateX(3px)}
+
+  .note{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 48px;color:var(--muted);font-size:15px}
+  .note svg{flex:none;margin-top:2px;color:var(--ink)}
+
+  footer{margin-top:auto;border-top:1px solid var(--line);padding:18px 0 28px;font-size:14px;color:var(--muted)}
+  footer .wrap{display:flex;gap:8px 18px;flex-wrap:wrap;align-items:center}
+  footer a{color:var(--muted)}
+  footer a:hover{color:var(--ink)}
+  footer .sp{flex:1}
+  #theme{font:inherit;font-size:14px;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:8px;padding:4px 10px;cursor:pointer}
+  #theme:hover{color:var(--ink)}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <p class="eyebrow">Study apps</p>
+    <h1>Study smarter with your own course material.</h1>
+    <p class="lead">Two free tools that run entirely in your browser. Practice with quizzes built from your lectures, then find the right slide or textbook page in seconds.</p>
+  </header>
+
+  <section class="apps" aria-label="Apps">
+    <a class="app qq" href="/Quiz_Qrusher/">
+      <div class="top">
+        <svg viewBox="0 0 512 512" aria-hidden="true">
+          <defs><linearGradient id="qqg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5145E6"/><stop offset="1" stop-color="#3A31B8"/></linearGradient></defs>
+          <rect width="512" height="512" rx="112" fill="url(#qqg)"/>
+          <g fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="246" cy="240" r="153" stroke-width="50"/>
+            <path d="M368 336L430 378" stroke-width="54"/>
+            <path d="M190 244L232 288L304 200" stroke-width="34"/>
+          </g>
+        </svg>
+        <div>
+          <h2>Quiz Qrusher</h2>
+          <span class="tag">Practice quizzes</span>
+        </div>
+      </div>
+      <p>Turn your course material into multiple-choice practice. AI writes the questions as a CSV; Quiz Qrusher runs the quiz, grades it, and shows where to focus next.</p>
+      <ul>
+        <li>Tutor mode, timer, and retakes of missed or flagged questions</li>
+        <li>Category trends and a follow-up prompt aimed at what you missed</li>
+        <li>Prompt Builder for any subject</li>
+      </ul>
+      <span class="go">Open Quiz Qrusher
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+
+    <a class="app cb" href="/Class_Base/">
+      <div class="top">
+        <svg viewBox="0 0 512 512" aria-hidden="true">
+          <defs><linearGradient id="cbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#24935C"/><stop offset="1" stop-color="#16603B"/></linearGradient></defs>
+          <rect width="512" height="512" rx="112" fill="url(#cbg)"/>
+          <rect x="132" y="92" width="268" height="190" rx="24" fill="#FFFFFF" fill-opacity=".42"/>
+          <rect x="92" y="130" width="282" height="206" rx="26" fill="#FFFFFF"/>
+          <path d="M136 186H290M136 230H252M136 274H214" fill="none" stroke="#1B7047" stroke-width="22" stroke-linecap="round"/>
+          <circle cx="338" cy="326" r="70" fill="#1B7047" stroke="#FFFFFF" stroke-width="30"/>
+          <path d="M392 380L432 420" fill="none" stroke="#FFFFFF" stroke-width="42" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <h2>Class Base</h2>
+          <span class="tag">Search slides &amp; textbooks</span>
+        </div>
+      </div>
+      <p>Add your lecture slides and textbook as PDFs and search every page at once. Paste the key words of a question and jump straight to the slide or page that answers it.</p>
+      <ul>
+        <li>Forgiving search: typos, plurals and exact "phrases"</li>
+        <li>Full-size slide and book viewers</li>
+        <li>Works offline once your files are added</li>
+      </ul>
+      <span class="go">Open Class Base
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+  </section>
+
+  <div class="note">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <span><strong style="color:var(--ink)">Your files stay with you.</strong> Both apps work on your device. Nothing you add is uploaded, and both can be installed and used offline.</span>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="https://github.com/BraxtonStryker/Quiz_Qrusher">Quiz Qrusher on GitHub</a>
+    <a href="https://github.com/BraxtonStryker/Class_Base">Class Base on GitHub</a>
+    <span class="sp"></span>
+    <button id="theme" type="button" aria-label="Toggle light or dark theme">Theme</button>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var r=document.documentElement;
+  try{ var t=localStorage.getItem("home-theme"); if(t) r.setAttribute("data-theme",t); }catch(e){}
+  document.getElementById("theme").addEventListener("click",function(){
+    var cur=r.getAttribute("data-theme");
+    var dark=cur?cur==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;
+    r.setAttribute("data-theme",dark?"light":"dark");
+    try{ localStorage.setItem("home-theme",r.getAttribute("data-theme")); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
