@@ -7,12 +7,12 @@
 <meta name="description" content="Free study apps that run in your browser: QuizQrusher for practice quizzes, InfoBase for searching your slides and textbooks, CwikCard for flashcards, and RunDown for notes in Markdown.">
 <meta name="theme-color" content="#EEF1F5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0E1218" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131A24'/%3E%3Crect x='14' y='14' width='16' height='16' rx='4' fill='%235145E6'/%3E%3Crect x='34' y='14' width='16' height='16' rx='4' fill='%2324935C'/%3E%3Crect x='14' y='34' width='16' height='16' rx='4' fill='%23E8611A'/%3E%3Crect x='34' y='34' width='16' height='16' rx='4' fill='%2314A394'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131A24'/%3E%3Crect x='14' y='14' width='16' height='16' rx='4' fill='%235145E6'/%3E%3Crect x='34' y='14' width='16' height='16' rx='4' fill='%2324935C'/%3E%3Crect x='14' y='34' width='16' height='16' rx='4' fill='%23E8611A'/%3E%3Crect x='34' y='34' width='16' height='16' rx='4' fill='%232F6BEA'/%3E%3C/svg%3E">
 <style>
   :root{
     color-scheme:light;
     --bg:#EEF1F5; --surface:#FFFFFF; --ink:#131A24; --muted:#616B7A; --line:#E2E7EE;
-    --qq:#4338CA; --qq-soft:#ECEBFB; --ib:#1E7A4C; --ib-soft:#E3F2EA; --cc:#C2410C; --cc-soft:#FDEDE3; --rd:#0F766E; --rd-soft:#E1F3F1;
+    --qq:#4338CA; --qq-soft:#ECEBFB; --ib:#1E7A4C; --ib-soft:#E3F2EA; --cc:#C2410C; --cc-soft:#FDEDE3; --rd:#1D4ED8; --rd-soft:#E6EEFD;
     --shadow:0 1px 2px rgba(19,26,36,.06), 0 8px 24px rgba(19,26,36,.06);
     --shadow-hover:0 2px 4px rgba(19,26,36,.08), 0 14px 34px rgba(19,26,36,.10);
     --font:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -21,7 +21,7 @@
     :root:not([data-theme="light"]){
       color-scheme:dark;
       --bg:#0E1218; --surface:#161C25; --ink:#E8ECF2; --muted:#96A0AD; --line:#263140;
-      --qq:#8B87FF; --qq-soft:#23233A; --ib:#6FD3A0; --ib-soft:#13281E; --cc:#FB923C; --cc-soft:#3A2210; --rd:#2DD4BF; --rd-soft:#0F2A28;
+      --qq:#8B87FF; --qq-soft:#23233A; --ib:#6FD3A0; --ib-soft:#13281E; --cc:#FB923C; --cc-soft:#3A2210; --rd:#6EA8FE; --rd-soft:#16243A;
       --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
       --shadow-hover:0 2px 4px rgba(0,0,0,.45), 0 14px 34px rgba(0,0,0,.45);
     }
@@ -29,7 +29,7 @@
   :root[data-theme="dark"]{
     color-scheme:dark;
     --bg:#0E1218; --surface:#161C25; --ink:#E8ECF2; --muted:#96A0AD; --line:#263140;
-    --qq:#8B87FF; --qq-soft:#23233A; --ib:#6FD3A0; --ib-soft:#13281E; --cc:#FB923C; --cc-soft:#3A2210; --rd:#2DD4BF; --rd-soft:#0F2A28;
+    --qq:#8B87FF; --qq-soft:#23233A; --ib:#6FD3A0; --ib-soft:#13281E; --cc:#FB923C; --cc-soft:#3A2210; --rd:#6EA8FE; --rd-soft:#16243A;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
     --shadow-hover:0 2px 4px rgba(0,0,0,.45), 0 14px 34px rgba(0,0,0,.45);
   }
@@ -184,12 +184,12 @@
     <a class="app rd" href="/RunDown/">
       <div class="top">
         <svg viewBox="0 0 512 512" aria-hidden="true">
-          <defs><linearGradient id="rdg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14A394"/><stop offset="1" stop-color="#0B5F59"/></linearGradient></defs>
+          <defs><linearGradient id="rdg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F6BEA"/><stop offset="1" stop-color="#1E40AF"/></linearGradient></defs>
           <rect width="512" height="512" rx="112" fill="url(#rdg)"/>
           <rect x="104" y="84" width="256" height="328" rx="30" fill="#FFFFFF"/>
-          <path d="M152 156H272" stroke="#0F766E" stroke-width="32" stroke-linecap="round"/>
-          <path d="M152 222H312M152 276H286M152 330H230" stroke="#0F766E" stroke-opacity=".5" stroke-width="22" stroke-linecap="round"/>
-          <circle cx="356" cy="360" r="82" fill="#0F766E" stroke="#FFFFFF" stroke-width="28"/>
+          <path d="M152 156H272" stroke="#1D4ED8" stroke-width="32" stroke-linecap="round"/>
+          <path d="M152 222H312M152 276H286M152 330H230" stroke="#1D4ED8" stroke-opacity=".5" stroke-width="22" stroke-linecap="round"/>
+          <circle cx="356" cy="360" r="82" fill="#1D4ED8" stroke="#FFFFFF" stroke-width="28"/>
           <path d="M356 314V398M322 366L356 400L390 366" fill="none" stroke="#FFFFFF" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <div>
